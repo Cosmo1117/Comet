@@ -1,0 +1,8 @@
+// url bar search history i hope this works
+const searchinput = document.getElementById('url-input');
+
+searchinput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        console.log("search entered")
+    }
+});

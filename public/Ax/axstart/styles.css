@@ -1,0 +1,72 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+@font-face {
+    font-family: 'Blanka';
+    src: url('../../assets/Blanka-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.app {
+    background-color: #08080f;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20vh;
+}
+
+.comet-typeface {
+    font-family: 'Blanka', sans-serif;
+    font-size: 48px;
+    margin-bottom: 75px;
+    font-size: 100px;
+    background: linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.comet-start-search {
+    width: 25vw;
+    height: 35px;
+    border-radius: 25px;
+    padding: 2px; /* thickness of ring */
+
+    background:
+        linear-gradient(#1F2937, #1F2937) padding-box,
+        linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff) border-box;
+    border: 2px solid transparent;
+    transition: filter 0.3s ease;
+}
+
+.comet-start-search:focus-within {
+    filter: brightness(1.3);
+}
+
+.comet-start-search input { 
+    width: 100%; 
+    height: 100%; 
+    padding: 0 15px; 
+    background-color: transparent; 
+    border: none; 
+    font-size: 14px; 
+    color: #94a4bd;
+    font-family: "Comfortaa", sans-serif
+}

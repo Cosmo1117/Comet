@@ -1,0 +1,60 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+@font-face {
+    font-family: 'Blanka';
+    src: url('../../assets/Blanka-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.app {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20vh;
+}
+
+.axiom-typeface {
+    font-family: 'Blanka', sans-serif;
+    font-size: 48px;
+    color: #ffffff;
+    margin-bottom: 50px;
+    font-size: 75px;
+}
+
+.axiom-start-search {
+    width: 25vw;
+    height: 35px;
+    background-color: #36;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.axiom-start-search input {
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+}

@@ -15,6 +15,10 @@
     "live-server": "^1.2.2"
   },
   "dependencies": {
-    "@mercuryworkshop/scramjet": "2.0.0-alpha"
+    "@mercuryworkshop/bare-mux": "^2.1.8",
+    "@mercuryworkshop/epoxy-transport": "^3.0.1",
+    "@mercuryworkshop/scramjet": "2.0.0-alpha",
+    "@tsparticles/engine": "^3.9.1",
+    "tsparticles": "^3.9.1"
   }
 }

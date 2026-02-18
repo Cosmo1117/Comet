@@ -47,11 +47,8 @@ html, body {
     width: 25vw;
     height: 35px;
     border-radius: 25px;
-    padding: 2px; /* thickness of ring */
-
-    background:
-        linear-gradient(#1F2937, #1F2937) padding-box,
-        linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff) border-box;
+    padding: 2px;
+    background:linear-gradient(#1F2937, #1F2937) padding-box, linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff) border-box;
     border: 2px solid transparent;
     transition: filter 0.3s ease;
 }

@@ -20,6 +20,9 @@ importers:
       '@tsparticles/engine':
         specifier: ^3.9.1
         version: 3.9.1
+      gsap:
+        specifier: ^3.14.2
+        version: 3.14.2
       tsparticles:
         specifier: ^3.9.1
         version: 3.9.1
@@ -453,6 +456,9 @@ packages:
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
+
+  gsap@3.14.2:
+    resolution: {integrity: sha512-P8/mMxVLU7o4+55+1TCnQrPmgjPKnwkzkXOK1asnR9Jg2lna4tEY5qBJjMmAaOBDDZWtlRjBXjLa0w53G/uBLA==}
 
   has-value@0.3.1:
     resolution: {integrity: sha512-gpG936j8/MzaeID5Yif+577c17TxaDmhuyVgSwtnL/q8UUTySg8Mecb+8Cf1otgLoD7DDH75axp86ER7LFsf3Q==}
@@ -1460,6 +1466,8 @@ snapshots:
       path-dirname: 1.0.2
 
   graceful-fs@4.2.11: {}
+
+  gsap@3.14.2: {}
 
   has-value@0.3.1:
     dependencies:

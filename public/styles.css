@@ -5,6 +5,25 @@ button:focus {
     outline: none;
 }
 
+:root { /* color vars */
+    --brand-color-gradient: linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff); /*this is a background. needs bg clip, webkit bg clip, and webkit text fill color. */
+    --text-bold: #ffffff;
+    --text-semibold: #dbe1ec;
+    --text-normal: #9ca8c0;
+    --text-minimal: #6B7280;
+    --text-user-input: #94a4bd;
+    --button-hover: #30314b;
+    --button-color: #3b5f95;
+    --main: #0f172a;
+    --main-dark: #08080f; 
+    --separator: #47486d;
+    --brand-color-1: #9713be;
+    --brand-color-2: #7f15e2;
+    --brand-color-3: #2c30ff;
+    --brand-color-4: #03a2ff;
+    --comfortaa: "Comfortaa", sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +39,7 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    background-color: #0f172a;
+    background-color: var(--main);
     overflow: hidden;
 }
 
@@ -29,8 +48,8 @@ html, body {
 #topbar {
     height: 100px;
     width: 100%;
-    background-color: #0f172a;
-    color: white;
+    background-color: var(--main);
+    color: var(--text-normal);
     display: flex;
     padding: 0 15px;
     flex-direction: row;
@@ -46,12 +65,57 @@ html, body {
 }
 
 #tab-row {
-    background-color: #08080f;
+    background-color: var(--main-dark);
     border-bottom-left-radius: 20px;
-    height: 50%;
+    height: 40%;
     width: 100%;
     display: flex;
     align-items: center;
+    padding-left: 5px;
+    gap: 5px;
+}
+
+.tabs {
+    display: flex;
+    width: 100%;
+    height: 80%;
+    max-width: 200px;
+    border-radius: 10px;
+    background-color: var(--button-color);
+    align-items: center;
+    padding-right: 5px;
+    padding-left: 2px;
+    font-family: var(--comfortaa);
+    gap: 10px;
+}
+
+#tab-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tabs > img {
+    height: 90%;
+    flex-shrink: 0;
+}
+
+.tab-close-btn {
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    font-size: 20px;
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background 0.3s ease;
+}
+
+.tab-close-btn:hover {
+    background-color: var(--button-hover)
 }
 
 #nav-row {
@@ -74,10 +138,11 @@ html, body {
     align-items: center;
     align-content: center;
     user-select: none;
+    padding-top: 3px;
 }
 
 .nav-btn:hover {
-    background:#30314b;
+    background: var(--button-hover);
 }
 
 .nav-btn img {
@@ -87,7 +152,7 @@ html, body {
 
 #url-bar-display {
     flex: 100;
-    background-color: #08080f;
+    background-color: var(--main-dark);
     border-radius: 40px;
     display: flex;
     align-items: center;
@@ -96,19 +161,23 @@ html, body {
 }
 
 #url-bar-display:hover {
-    background: #30314b;
+    background: var(--button-hover);
 }
 
 #url-input {
     align-items: center;
     margin: 10px;
     height: 100%;
-    width: 90%;
+    width: 100%;
     background-color: transparent;
     border: none;
-    color: white;
+    color: var(--text-user-input);
     text-emphasis-color: transparent;
     font-family: "Comfortaa", sans-serif
+}
+
+#url-input::placeholder {
+    color: var(--text-minimal);
 }
 
 .topbar-right {
@@ -145,7 +214,29 @@ html, body {
     width: 120%;
     flex-direction: row;
     align-items: center;
-    border-bottom: 1px #47486d solid;
+    justify-content: center;
+    border-bottom: 1px var(--separator) solid;
+}
+
+.bookmarks {
+    width: 80%;
+    aspect-ratio: 1/1;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    transition: background 0.3s ease;
+}
+
+.bookmarks:hover {
+    background-color: var(--button-hover)
+}
+
+#bookmark-favicon {
+    height: 100%;
+    width: 90%;
+    margin-top: 2px;
 }
 
 .sidebar-app-select {
@@ -160,14 +251,15 @@ html, body {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    transition: background 0.3s ease;
-    color:#9ca8c0;
+    transition: background 0.3s ease, color 0.3s ease;
+    color: var(--text-normal);
     font-weight: 600;
     font-family: "Comfortaa", sans-serif
 }
 
 .sidebar-app-select:hover {
-    background-color: #30314b;
+    background-color: var(--button-hover);
+    color: var(--text-semibold);
 }
 
 #sidebar-apps-icon {
@@ -180,7 +272,7 @@ html, body {
     padding-top: 15px;
     flex-direction: row;
     align-content: center;
-    border-top: 1px #47486d solid;
+    border-top: 1px var(--separator) solid;
     gap: 8px;
 }
 
@@ -196,7 +288,7 @@ html, body {
 }
 
 .sidebar-settings-button:hover {
-    background-color: #30314b;
+    background-color: var(--button-hover);
 }
 
 .sidebar-footer-extras {
@@ -210,40 +302,41 @@ html, body {
 .sidebar-fe-button {
     background: transparent;
     display: flex;
-    color: #6B7280;
+    color: var(--text-minimal);
     height: 13px;
     border: none;
     cursor: pointer;
     font-size: 10px;
     justify-content: center;
-    border-bottom: 1px solid #47486d;
+    border-bottom: 1px solid var(--separator);
+    transition: color 0.3s ease;
 }
 
 .sidebar-fe-button:hover {
-    color: white;
+    color: var(--text-semibold);
 }
 
 .sidebar-fe-button-bottom {
     background: transparent;
     display: flex;
-    color: #6B7280;
+    color: var(--text-minimal);
     height: 13px;
     border: none;
     cursor: pointer;
     font-size: 10px;
     align-items: baseline;
     justify-content: center;
-
+    transition: color 0.3s ease;
 }
 
 .sidebar-fe-button-bottom:hover {
-    color: white;
+    color: var(--text-semibold);
 }
 
 /* main content area, actual browser */
 
 .main-content-area {
-    background-color: #212236;
+    background-color: var(--main);
     width: 100%;
     height: 100%;
     flex: 100;
@@ -257,4 +350,171 @@ html, body {
     height: 100%;
     border: 0;
     border-top-left-radius: 20px;
+}
+
+/* music player overlay*/
+
+.music-player {
+    height: 200px;
+    background-color: var(--main);
+    width: 420px;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(5px);
+    bottom: 50px;
+    right: 25px;
+    border-radius: 20px;
+    gap: 10px;
+    padding: 10px;
+}
+
+#musicplayer-top {
+    display: flex;
+    height: 60%;
+    width: 100%;
+    flex-direction: row;
+}
+
+#cover-art {
+    width: 110px;
+    height: 110px;
+    border-radius: 20px;
+}
+
+.songinfo {
+    display: flex;
+}
+
+#music-info {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-normal);
+    gap: 5px;
+    font-family: var(--comfortaa);
+}
+
+#songname {
+    border-bottom: 1px var(--separator) solid;
+    padding-bottom: 5px;
+}
+
+.musicplayer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#controls-top {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    color: var(--text-normal);
+    font-family: var(--comfortaa);
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 10px;
+    justify-content: center;
+}
+
+#song-progress {
+    -webkit-appearance: none;
+    justify-content: center;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    background: var(--button-color);
+    border-radius: 2px;
+    outline: none;
+    margin-top: 5px;
+}
+
+#song-progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: var(--text-normal);
+    cursor: pointer;
+    border: none;
+}
+
+#song-progress::-moz-range-thumb {
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: var(--text-normal);
+    cursor: pointer;
+    border: none;
+}
+
+#controls-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.songcontrol-btn {
+    position: relative;
+    display: flex;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    padding: 0;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button-color);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.songcontrol-btn::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, var(--brand-color-2), var(--brand-color-3));
+    filter: blur(6px);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.songcontrol-btn:hover::before {
+    opacity: 1;
+}
+
+.songcontrol-btn:hover {
+    background: linear-gradient(90deg, var(--brand-color-2), var(--brand-color-3));
+}
+
+.songcontrol-btn-side {
+    display: flex;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    padding: 0px;
+    line-height: 0;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.songcontrol-btn-side:hover {
+    background-color: var(--button-hover)
+}
+
+.songcontrol-btn-svg {
+    height: 20px;
+    width: 20px;
+    display: block;
 }

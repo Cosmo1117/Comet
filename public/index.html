@@ -9,12 +9,10 @@
         <title>Comet</title>
         <link rel="stylesheet" href="styles.css">
         <link rel="icon" href="assets/comet-logo.png" type="image/png">
-        <script src="app.js" defer></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
-        <script src="/scram/scramjet.all.js"></script>
-        <script src="https://unpkg.com/@mercuryworkshop/bare-mux"></script>
+        <script src="/app.js" defer></script>
     </head>
     <body>
         <div class="app">
@@ -22,7 +20,13 @@
                 <img id="topbar-logo" src="assets/comet-logo.png" alt="axiom">
 
                 <div class="topbar-right"> <!--for distinction between logo and nav/tab flex-->
-                    <div id="tab-row"></div>
+                    <div id="tab-row">
+                        <div class="tabs">
+                            <img src="assets/globe-svgrepo-com.svg" id="tab-favicon">
+                            <p id="tab-name">New Tab</p>
+                            <button class="tab-close-btn">&#x00D7</button>
+                        </div>
+                    </div>
                     <div id="nav-row">
                         <button class="nav-btn" id="back-btn-nav">
                             <img src="assets/arrow-left-svgrepo-com.svg" draggable="false" alt="click to go back">
@@ -54,7 +58,7 @@
                         </button>
 
                         <button class="nav-profile-btn" id="profile-btn-nav">
-                            <img src="will be user profile" draggable="false" alt="click to view profile">
+                            <img src="" draggable="false" alt="click to view profile">
                         </button>
                     </div>
                 </div>
@@ -62,7 +66,9 @@
             <div id="bottom"> <!--distinction between flex for sidebar and main content area-->
                 <div class="sidebar"> <!--sidebar container-->
                     <div class="sidebar-bm-column">
-                        <button class="bookmarks">This is an example bookmark</button>
+                        <button class="bookmarks">
+                            <img id="bookmark-favicon" src="assets/globe-svgrepo-com.svg" draggable= "false">
+                        </button>
                     </div>
                     <button class="sidebar-app-select">
                         <img id="sidebar-apps-icon" src="assets/grid-2-svgrepo-com.svg" draggable= "false" alt="click to open apps">
@@ -81,6 +87,46 @@
                 </div>
                 <div class="main-content-area"> <!--browsing viewport-->
                     <iframe id="pvp-frame" name="pvp-frame" src="Ax/axstart/index.html" width="100%" height="100%" frameborder="0"></iframe>
+
+                    <div class="music-player" id="music-player-popup">  <!--music player obv-->
+                        <div id="musicplayer-top">
+                            <img id="cover-art" src="assets/album-cover-placeholder.jpg"></img>
+                            <div id="music-info">
+                                <h2 class="songinfo" id="songname">Nothing is playing</h2>
+                                <h4 class="songinfo" id="songartist">John Doe</h4>
+                            </div>
+                        </div>
+                        <div class="musicplayer-bottom">
+                            <div id="controls-top">
+                                <p id="song-progress-number">0:00</p>
+                                <input type="range" id="song-progress" min="0" max="100" step="1">
+                                <p id="song-remaining-number">0:00</p>
+                            </div>
+                            <div id="controls-bottom">
+                                <button class="songcontrol-btn-side" id="song-back">
+                                    <svg class="songcontrol-btn-svg" id="songback-svg" viewBox="0 0 24 24" fill="#3b5f95">
+                                        <path d="M6 5c-.6 0-1 .4-1 1v12c0 .6.4 1 1 1s1-.4 1-1V6c0-.6-.4-1-1-1zm12.3 12.7c1 .6 2.2-.1 2.2-1.3V7.6c0-1.2-1.3-1.9-2.2-1.3l-8.3 4.8c-1 .6-1 2 0 2.6l8.3 4.8z"/>
+                                    </svg>
+                                </button>
+                                <button class="songcontrol-btn" id="song-playpause">
+                                    <svg class="songcontrol-btn-svg" id="songplaypause-svg" viewBox="0 0 24 24" fill="#08080f">
+                                        <path d="M6 4.48c0-1.15 1.25-1.88 2.25-1.3l12.44 7.21c1 .58 1 2.02 0 2.6l-12.44 7.21c-1 .58-2.25-.15-2.25-1.3V4.48z" id="songplay-svg-path"/>
+                                    </svg>
+                                </button>
+                                <button class="songcontrol-btn-side" id="song-forward">
+                                    <svg class="songcontrol-btn-svg" id="songforward-svg" viewBox="0 0 24 24" fill="#3b5f95">
+                                        <path d="M18 5c-.6 0-1 .4-1 1v12c0 .6.4 1 1 1s1-.4 1-1V6c0-.6-.4-1-1-1zM5.7 17.7c-1 .6-2.2-.1-2.2-1.3V7.6c0-1.2 1.3-1.9 2.2-1.3l8.3 4.8c1 .6 1 2 0 2.6l-8.3 4.8z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="app-select-options">
+                        <button id="chats">
+                            
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

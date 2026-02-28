@@ -5,16 +5,35 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles.css">
-        <script src="app.js"></script>
+        <script src="app.js" defer></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../../variables.css">
     </head>
     <body>
         <div class="app">
-            <div class="comet-typeface">COMET</div>
-            <div class="comet-start-search">
-                <input type="text" autocomplete="off" id="start-search-input" placeholder="Search Brave or type a URL...">
+            <img src="../../assets/macos-monterey-wwdc-21-stock-dark-mode-5k-6016x6016-5585.jpg"  class="start-wallpaper" id="start-wp">
+            <div class="comet-searchcard">
+                <div class="comet-typeface">COMET</div>
+                <div class="comet-start-search">
+                    <input type="text" autocomplete="off" id="start-search-input" placeholder="Search Brave or type a URL...">
+                </div>
+            </div>
+            <button class="wallpaper-change" id="wallpaper-change">
+                <span class="wp-change-text">Change wallpaper</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="wpchange-svg"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
+            </button>
+            <div class="modal-backdrops" id="modal-backdrops">
+                <div class="wallpaper-change-overlay" id="wallpaper-change-overlay">
+                    <div id="wallpaper-preview"></div>
+                    <div id="wallpaper-overlay-bottom">
+                        <label for="wallpaper-upload"id="wallpaper-upload-zone">
+                            <input type="file" id="wallpaper-upload" accept="image/*">
+                            Drag+drop an image or click to browse
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

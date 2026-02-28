@@ -1,0 +1,20 @@
+:root { /* color vars */
+    --brand-color-gradient: linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff); /*this is a background. needs bg clip, webkit bg clip, and webkit text fill color. */
+    --text-bold: #ffffff;
+    --text-semibold: #dbe1ec;
+    --text-normal: #9ca8c0;
+    --text-minimal: #6B7280;
+    --text-user-input: #94a4bd;
+    --button-hover: #30314b;
+    --button-hover-dark: #1b1b30;
+    --button-color: #4a48a3;
+    --main: #150f2a;
+    --main-dark: #08080f; 
+    --accent-1: #38334d;
+    --separator: #47486d;
+    --brand-color-1: #9713be;
+    --brand-color-2: #7f15e2;
+    --brand-color-3: #2c30ff;
+    --brand-color-4: #03a2ff;
+    --comfortaa: "Comfortaa", sans-serif;
+}

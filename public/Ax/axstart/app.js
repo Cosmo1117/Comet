@@ -24,3 +24,42 @@ if (modalBackdrop) {
         }
     });
 }
+
+function updateTime() {
+    const time = new Date();
+
+    const timeString = time.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+    });
+
+    document.getElementById('time').textContent = timeString;
+}
+
+updateTime();
+setInterval(updateTime, 1000);
+
+async function getCometWeather() {
+    try {
+        const coords = await new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+
+        const { latitude, longitude } = coords.coords;
+
+        const response = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`
+        );
+        const data = await response.json();
+
+        const temp = Math.round(data.current_weather.temperature);
+        document.getElementById('weather-display').textContent = `${temp}°C`;
+        
+    } catch (error) {
+        console.error("Weather failed:", error);
+        document.getElementById('weather-display').textContent = "Weather Unavailable";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", getCometWeather);

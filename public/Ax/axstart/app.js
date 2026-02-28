@@ -25,6 +25,8 @@ if (modalBackdrop) {
     });
 }
 
+//clock
+
 function updateTime() {
     const time = new Date();
 
@@ -40,26 +42,30 @@ function updateTime() {
 updateTime();
 setInterval(updateTime, 1000);
 
+//weather
+
 async function getCometWeather() {
     try {
-        const coords = await new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition(resolve, reject);
-        });
+        const ipResponse = await fetch('http://ip-api.com/json');
+        const location = await ipResponse.json();
 
-        const { latitude, longitude } = coords.coords;
+        if (location.status !== "success") throw new Error("Failed to grab location")
 
-        const response = await fetch(
-            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`
+        const { lat, lon, city } = location;
+
+        const weatherResponse = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&temperature_unit=fahrenheit`
         );
-        const data = await response.json();
+        const weatherData = await weatherResponse.json();
 
-        const temp = Math.round(data.current_weather.temperature);
-        document.getElementById('weather-display').textContent = `${temp}°C`;
+        const temp = Math.round(weatherData.current_weather.temperature);
+        document.getElementById('weather').textContent = `${temp}°F`;
         
     } catch (error) {
         console.error("Weather failed:", error);
-        document.getElementById('weather-display').textContent = "Weather Unavailable";
+        document.getElementById('weather').textContent = "Weather Unavailable";
     }
 }
 
 document.addEventListener("DOMContentLoaded", getCometWeather);
+

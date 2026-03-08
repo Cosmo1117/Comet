@@ -45,6 +45,8 @@ html, body {
     user-select: none;
 }
 
+/* tabs */
+
 #tab-row {
     background-color: var(--main-dark);
     border-bottom-left-radius: 20px;
@@ -56,11 +58,23 @@ html, body {
     gap: 5px;
 }
 
-.tabs {
+@keyframes tab-in {
+    from { max-width: 0; padding-left: 0; padding-right: 0; opacity: 0; }
+    to   { max-width: 200px; padding-left: 2px; padding-right: 5px; opacity: 1; }
+}
+
+@keyframes tab-out {
+    from { max-width: 200px; padding-left: 2px; padding-right: 5px; opacity: 1; }
+    to   { max-width: 0; padding-left: 0; padding-right: 0; opacity: 0; }
+}
+
+.tab-div {
     display: flex;
     width: 100%;
     height: 75%;
     max-width: 200px;
+    min-width: 0;
+    overflow: hidden;
     border-radius: 10px;
     background-color: transparent;
     align-items: center;
@@ -72,8 +86,21 @@ html, body {
     cursor: pointer;
 }
 
-.tabs:hover {
+.tab-div.new {
+    animation: tab-in 0.3s cubic-bezier(.71,.08,.54,.87);
+}
+
+.tab-div.removing {
+    animation: tab-out 0.3s cubic-bezier(.71,.08,.54,.87);
+    pointer-events: none;
+}
+
+.tab-div.active {
     background-color: var(--button-color);
+}
+
+.tab-div:hover {
+    background-color: var(--button-hover);
 }
 
 #tab-name {
@@ -85,7 +112,7 @@ html, body {
 .tabs > img {
     height: 28px;
     width: 28px;
-    flex-shrink: 0;
+    min-width: 28px;
     border-radius: 5px;
 }
 
@@ -377,12 +404,23 @@ html, body {
     overflow: hidden;
 }
 
-.main-content-area > iframe {
-    display: block;
+#iframe-area {
+    flex-grow: 1;
     width: 100%;
     height: 100%;
-    border: 0;
-    border-top-left-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: none;
+}
+
+.tab-iframe.show {
+    display: block;
 }
 
 /* music player overlay*/

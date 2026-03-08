@@ -241,6 +241,8 @@ html, body {
     border-color: var(--accent-1)
 }
 
+#wallpaper-overlay-bottom.fileover
+
 #wallpaper-upload-zone {
     background-color: pink;
 }

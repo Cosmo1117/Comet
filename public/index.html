@@ -22,10 +22,12 @@
 
                 <div class="topbar-right"> <!--for distinction between logo and nav/tab flex-->
                     <div id="tab-row">
-                        <template class="tabs">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tab-favicon"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg>
-                            <p id="tab-name">New Tab</p>
-                            <button class="tab-close-btn">&#x00D7</button>
+                        <template id="tab" class="tabs">
+                            <div class="tab-div">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tab-favicon"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg>
+                                <p class="tab-name">New Tab</p>
+                                <button class="tab-close-btn">&#x00D7</button>
+                            </div>
                         </template>
                         <button class="new-tab" id="tab-new-btn">+</button>
                     </div>
@@ -87,7 +89,7 @@
                     </div>
                 </div>
                 <div class="main-content-area"> <!--browsing viewport-->
-                    <iframe id="pvp-frame" name="pvp-frame" src="Ax/axstart/index.html" width="100%" height="100%" frameborder="0"></iframe>
+                    <div id="iframe-area" class="iframe-area" style="width: 100%; height: 100%; background-color: var(--main-dark);"></div>
 
                     <div class="music-player" id="music-player-popup">  <!--music player obv-->
                         <div id="musicplayer-top">

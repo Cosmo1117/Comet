@@ -70,30 +70,38 @@ function renderTabs() {
     const iframeContainer = document.getElementById('iframe-area');
     const newTabBtn = document.getElementById('tab-new-btn');
 
-    tabBar.innerHTML = "";
+    tabBar.querySelectorAll('.tab-div').forEach(el => {
+        if (!tabs.find(t => t.id == el.dataset.tabId)) el.remove();
+    });
 
     tabs.forEach(tab => {
-        const clone = tabTemplate.content.cloneNode(true);
-        const tabEl = clone.querySelector('.tab-div');
-        const nameEl = clone.querySelector('.tab-name');
-        const closeBtn = clone.querySelector('.tab-close-btn');
+        let tabEl = tabBar.querySelector(`.tab-div[data-tab-id="${tab.id}"]`);
 
-        tabEl.setAttribute('data-tab-id', tab.id);
-        if (tab.id === activeTabId) tabEl.classList.add('active');
-        if (tab.id === newlyCreatedTabId) tabEl.classList.add('new');
-        nameEl.textContent = tab.title;
+        if (!tabEl) {
+            const clone = tabTemplate.content.cloneNode(true);
+            const el = clone.querySelector('.tab-div');
+            const nameEl = clone.querySelector('.tab-name');
+            const closeBtn = clone.querySelector('.tab-close-btn');
 
-        tabEl.addEventListener('click', () => {
-            activeTabId = tab.id;
-            renderTabs();
-        });
+            el.setAttribute('data-tab-id', tab.id);
+            nameEl.textContent = tab.title;
+            if (tab.id === newlyCreatedTabId) el.classList.add('new');
 
-        closeBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            closeTab(tab.id);
-        });
+            el.addEventListener('click', () => {
+                activeTabId = tab.id;
+                renderTabs();
+            });
 
-        tabBar.appendChild(clone);
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeTab(tab.id);
+            });
+
+            tabBar.insertBefore(clone, newTabBtn);
+            tabEl = tabBar.querySelector(`.tab-div[data-tab-id="${tab.id}"]`);
+        }
+
+        tabEl.classList.toggle('active', tab.id === activeTabId);
 
         let iframe = document.querySelector(`iframe[data-tab-id="${tab.id}"]`);
         if (!iframe) {
@@ -105,7 +113,7 @@ function renderTabs() {
         }
         iframe.style.display = (tab.id === activeTabId) ? 'block' : 'none';
     });
-    
+
     newlyCreatedTabId = null;
     tabBar.appendChild(newTabBtn);
 

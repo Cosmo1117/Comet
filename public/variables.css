@@ -16,5 +16,22 @@
     --brand-color-2: #7f15e2;
     --brand-color-3: #2c30ff;
     --brand-color-4: #03a2ff;
+    /* tab colors they need their own thing cause they different */
+    --tab-bg-passive: transparent;
+    --tab-bg-hover: #252041;
+    --tab-bg-active: #312958;
+    --tab-accent: linear-gradient(90deg, #7f15e2, #2c30ff);
+    --tab-close-hover: #3d3574;
+    /* fonts */
     --comfortaa: "Comfortaa", sans-serif;
+    /*border-radii for squircle support idk why im obsessing over this */
+    --br10px: 10px;
+    --br1px: 1px;
+    --br5px: 5px;
+    --br100prc: 100%;
+    --br40px: 40px;
+    --br20px: 20px;
+    --br2px: 2px;
+    --br50prc: 50%;
+    --br25px: 25px;
 }

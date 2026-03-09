@@ -68,7 +68,7 @@ html, body {
 .comet-start-search {
     width: 25vw;
     height: 35px;
-    border-radius: 25px;
+    border-radius: var(--br25px);
     padding: 2px;
     background:linear-gradient(#1F2937, #1F2937) padding-box, linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff) border-box;
     border: 2px solid transparent;
@@ -109,7 +109,7 @@ html, body {
     align-items: center;
     background: color-mix(in srgb, var(--main), transparent 50%);
     backdrop-filter: blur(10px);
-    border-radius: 20px;
+    border-radius: var(--br20px);
     gap: 60px;
     padding: 30px;
     padding-left: 50px;
@@ -128,7 +128,7 @@ html, body {
     height: 50px;
     width: 50px;
     border: none;
-    border-radius: 25px;
+    border-radius: var(--br25px);
     background: color-mix(in srgb, var(--main), transparent 50%);
     backdrop-filter: blur(10px);
     cursor: pointer;
@@ -198,7 +198,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
+    border-radius: var(--br20px);
     border: none;
     gap: 50px;
     padding: 50px;
@@ -224,7 +224,7 @@ html, body {
     min-width: 80%;
     background-color: rgb(122, 122, 122);
     border: none;
-    border-radius: 20px;
+    border-radius: var(--br20px);
 }
 
 #wallpaper-overlay-bottom {
@@ -235,7 +235,7 @@ html, body {
     align-items: center;
     height: 30%;
     width: 70%;
-    border-radius: 10px;
+    border-radius: var(--br10px);
     border-style: dashed;
     border-width: 2px;
     border-color: var(--accent-1)
@@ -259,8 +259,31 @@ html, body {
     align-items: center;
     background-color: var(--main-dark);
     border: none;
-    border-radius: 10px;
+    border-radius: var(--br10px);
     color: var(--text-normal);
     font-family: "Comfortaa", sans-serif;
     cursor: pointer;
+}
+
+@supports (corner-shape: squircle) {
+    * {
+        corner-shape: squircle;
+        --br10px: 14px;
+        --br1px: 1px;
+        --br5px: 7px;
+        --br100prc: 100%;
+        --br40px: 56px;
+        --br20px: 28px;
+        --br2px: 3px;
+        --br50prc: 50%;
+        --br25px: 35px;
+    }
+
+    .comet-start-search {
+        corner-shape: round;
+    }
+
+    .wallpaper-change {
+        corner-shape: round;
+    }
 }

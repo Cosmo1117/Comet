@@ -24,7 +24,7 @@ function createTab(url = defaultUrl) {
     const newTab = {
         id: tabId,
         url: url,
-        title: "Comet"
+        title: "New Tab"
     };
 
     if (tabs.length >= 6) return;
@@ -121,4 +121,19 @@ function renderTabs() {
         const id = parseInt(frame.getAttribute('data-tab-id'));
         if (!tabs.find(t => t.id === id)) frame.remove();
     });
+}
+
+function editTab(id, data) {
+    const tab = tabs.find(t => t.id === id);
+    if (!tab) throw new error("No tab currently detected.");
+
+    if (data.title) tab.title = data.title;
+    if (data.favicon) tab.favicon = data.favicon;
+    if (data.url) {
+        tab.url = data.url;
+        const iframe = document.querySelector(`iframe[data-tab-id="${id}"]`);
+        if (iframe) iframe.src = data.url;
+    }
+
+    renderTabs();
 }

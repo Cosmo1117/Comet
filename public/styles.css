@@ -108,7 +108,7 @@ html, body {
     position: absolute;
     bottom: -3px;
     height: 2px;
-    width: 90%;
+    width: 96%;
     transform: translateX(50%);
     background-image: var(--tab-accent);
     border-radius: var(--br1px);
@@ -373,7 +373,7 @@ html, body {
 
 .sidebar-footer-extras {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 2px;
     align-content: center;
     padding-top: 5px;
@@ -388,7 +388,8 @@ html, body {
     cursor: pointer;
     font-size: 10px;
     justify-content: center;
-    border-bottom: 1px solid var(--separator);
+    border-right: 1px solid var(--separator);
+    padding-right: 2px;
     transition: color 0.3s ease;
 }
 
@@ -620,7 +621,7 @@ html, body {
     display: flex;
     flex-direction: column;
     width: 200px;
-    bottom: 80px;
+    bottom: 60px;
     left: 120px;
     padding: 20px;
     border-radius: var(--br20px);

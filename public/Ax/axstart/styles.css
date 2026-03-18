@@ -63,6 +63,7 @@ html, body {
     background: linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff);
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: 5px;
 }
 
 .comet-start-search {

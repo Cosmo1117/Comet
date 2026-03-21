@@ -141,40 +141,21 @@ function editTab(id, data) {
     renderTabs();
 }
 
-console.log(Object.keys(globalThis).filter(k => k.toLowerCase().includes('scramjet')));
-console.log(Object.keys(window).filter(k => k.toLowerCase().includes('scramjet')));
-
-console.log($scramjetLoadController);
-console.log(typeof $scramjetLoadController);
-
 //sj
 
 const { ScramjetController } = $scramjetLoadController();
 
-const scramjet = new $scramjetLoadController({
+const scramjet = new ScramjetController({
     prefix: "/scramjet/",
     files: {
         wasm: "/scramjet.wasm.wasm",
-        worker: "/scramjet.bundle.js",
-        client: "/scramjet.all.js",
+        all: "/scramjet.all.js",
         sync: "/scramjet.sync.js",
-    },
-    codec: {
-        encode: `if (url.startsWith('blob:')) return url;
-return encodeURIComponent(url);`,
-        decode: `return decodeURIComponent(url);`,
-    },
-    transport: EpoxyTransport.EpoxyClient,
-    transportConfig: {
-        wisp: "wss://cometpxy.org/wisp/",
     },
 });
 
-console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(scramjet)));
-
-console.log(ScramjetController);
-
-await scramjet.init("/sw.js");
+scramjet.init();
+navigator.serviceWorker.register("/sw.js");
 
 //url 
 

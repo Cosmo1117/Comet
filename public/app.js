@@ -144,7 +144,6 @@ function editTab(id, data) {
 //sj
 
 import { ScramjetController } from "/scramjet.all.js";
-import { EpoxyClient } from "/epoxy.js";
 
 const scramjet = new ScramjetController({
     prefix: "/scramjet/",
@@ -159,7 +158,7 @@ const scramjet = new ScramjetController({
 return encodeURIComponent(url);`,
         decode: `return decodeURIComponent(url);`,
     },
-    transport: EpoxyClient,
+    transport: EpoxyTransport.EpoxyClient,
     transportConfig: {
         wisp: "wss://cometpxy.org/wisp/",
     },

@@ -155,12 +155,10 @@ const scramjet = new ScramjetController({
 });
 
 scramjet.init();
+await navigator.serviceWorker.register("/sw.js");
 
 const connection = new BareMux.BareMuxConnection("/baremux-worker.js");
 await connection.setTransport("/epoxy.mjs", [{ wisp: "wss://cometpxy.org/wisp/" }]);
-
-navigator.serviceWorker.register("/sw.js");
-
 //url 
 
 document.getElementById('url-input').addEventListener('keydown', (e) => {

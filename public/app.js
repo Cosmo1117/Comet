@@ -155,6 +155,10 @@ const scramjet = new ScramjetController({
 });
 
 scramjet.init();
+
+const connection = new BareMux.BareMuxConnection("/baremux-worker.js");
+await connection.setTransport("/epoxy.js", ["wss://cometpxy.org/wisp/"]);
+
 navigator.serviceWorker.register("/sw.js");
 
 //url 

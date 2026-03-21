@@ -172,6 +172,8 @@ return encodeURIComponent(url);`,
 
 console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(scramjet)));
 
+console.log(ScramjetController);
+
 await scramjet.init("/sw.js");
 
 //url 

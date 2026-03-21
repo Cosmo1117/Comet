@@ -145,7 +145,7 @@ html, body {
     background-color: var(--tab-bg-hover);
 }
 
-#tab-name {
+.tab-name {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

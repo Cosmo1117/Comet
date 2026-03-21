@@ -16,7 +16,7 @@ if (appbtn) {
 let tabs = [];
 let activeTabId= null;
 let newlyCreatedTabId = null;
-const defaultUrl = "ax/axstart/index.html";
+const defaultUrl = "Ax/axstart/index.html";
 const tabTemplate = document.getElementById('tab');
 
 function createTab(url = defaultUrl) {
@@ -202,4 +202,5 @@ function navigate(url) {
 }
 
 console.log(Object.keys(globalThis).filter(k => k.toLowerCase().includes('scramjet')));
+console.log(Object.keys(window).filter(k => k.toLowerCase().includes('scramjet')));
 

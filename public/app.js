@@ -133,9 +133,9 @@ function editTab(id, data) {
         tab.url = data.url;
         const iframe = document.querySelector(`iframe[data-tab-id="${id}"]`);
         if (iframe) iframe.src = data.url;
-        document.getElementById('url-input').value = data.url.startsWith('/scramjet/') 
-            ? scramjet.decodeUrl(data.url) 
-            : data.url;
+            document.getElementById('url-input').value = data.url.startsWith('/scramjet/') 
+                ? decodeURIComponent(data.url.replace('/scramjet/', ''))
+                : data.url;
     }
 
     renderTabs();

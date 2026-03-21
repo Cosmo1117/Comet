@@ -141,7 +141,9 @@ function editTab(id, data) {
     renderTabs();
 }
 
-//sj
+//sj and wisp
+
+const wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
 
 const { ScramjetController } = $scramjetLoadController();
 
@@ -152,14 +154,17 @@ const scramjet = new ScramjetController({
         all: "/scramjet.all.js",
         sync: "/scramjet.sync.js",
     },
+    defaultConfig: {
+        wisp: wispUrl,
+    }
 });
 
 scramjet.init();
 await navigator.serviceWorker.register("/sw.js");
 
-const wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
 const connection = new BareMux.BareMuxConnection("/baremux-worker.js");
 await connection.setTransport("/epoxy.mjs", [{ wisp: wispUrl }]);
+
 //url 
 
 document.getElementById('url-input').addEventListener('keydown', (e) => {

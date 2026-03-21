@@ -101,6 +101,10 @@ function renderTabs() {
             tabEl = tabBar.querySelector(`.tab-div[data-tab-id="${tab.id}"]`);
         }
 
+        tabEl.classList.toggle('active', tab.id === activeTabId);
+        const nameEl = tabEl.querySelector('.tab-name');
+        if (nameEl) nameEl.textContent = tab.title;
+
         let iframe = document.querySelector(`iframe[data-tab-id="${tab.id}"]`);
         if (!iframe) {
             iframe = document.createElement('iframe');
@@ -132,9 +136,11 @@ function editTab(id, data) {
         tab.url = data.url;
         const iframe = document.querySelector(`iframe[data-tab-id="${id}"]`);
         if (iframe) iframe.src = data.url;
+        if (id === activeTabId) {
             document.getElementById('url-input').value = data.url.startsWith('/scramjet/') 
                 ? decodeURIComponent(data.url.replace('/scramjet/', ''))
                 : data.url;
+        }
     }
 
     renderTabs();

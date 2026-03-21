@@ -105,6 +105,19 @@ function renderTabs() {
         const nameEl = tabEl.querySelector('.tab-name');
         if (nameEl) nameEl.textContent = tab.title;
 
+        if (tab.id === activeTabId) {
+            if (tab.url === 'Ax/axstart/index.html') {
+            document.getElementById('url-input').value = '';
+            } else if (tab.url.startsWith('Ax/ax')) {
+                const page = tab.url.replace('Ax/ax', '').replace('/index.html', '');
+                document.getElementById('url-input').value = `comet://${page}`;
+            } else if (tab.url.startsWith('/scramjet/')) {
+                document.getElementById('url-input').value = decodeURIComponent(tab.url.replace('/scramjet/', ''));
+            } else {
+                document.getElementById('url-input').value = tab.url;
+            }
+        }
+
         let iframe = document.querySelector(`iframe[data-tab-id="${tab.id}"]`);
         if (!iframe) {
             iframe = document.createElement('iframe');

@@ -147,6 +147,9 @@ console.log(Object.keys(window).filter(k => k.toLowerCase().includes('scramjet')
 console.log($scramjetLoadController);
 console.log(typeof $scramjetLoadController);
 
+const ScramjetController = $scramjetLoadController();
+console.log(ScramjetController);
+
 //sj
 
 const scramjet = new $scramjetLoadController({

@@ -101,8 +101,6 @@ function renderTabs() {
             tabEl = tabBar.querySelector(`.tab-div[data-tab-id="${tab.id}"]`);
         }
 
-        tabEl.classList.toggle('active', tab.id === activeTabId);
-
         let iframe = document.querySelector(`iframe[data-tab-id="${tab.id}"]`);
         if (!iframe) {
             iframe = document.createElement('iframe');
@@ -110,6 +108,7 @@ function renderTabs() {
             iframe.setAttribute('data-tab-id', tab.id);
             iframe.className = 'tab-iframe';
             iframeContainer.appendChild(iframe);
+            setupIframeListeners(iframe, tab.id);
         }
         iframe.style.display = (tab.id === activeTabId) ? 'block' : 'none';
     });
@@ -139,6 +138,20 @@ function editTab(id, data) {
     }
 
     renderTabs();
+}
+
+function setupIframeListeners(iframe, tabId) {
+    iframe.addEventListener('load', () => {
+        try {
+            const title = iframe.contentDocument?.title;
+            const faviconEl = iframe.contentDocument?.querySelector('link[rel*="icon"]');
+            const favicon = faviconEl?.href;
+
+            if (title) editTab(tabId, { title });
+            if (favicon) editTab(tabId, { favicon });
+        } catch (e) {
+        }
+    });
 }
 
 //sj and wisp

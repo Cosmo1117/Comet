@@ -154,7 +154,7 @@ const scramjet = new ScramjetController({
         all: "/scramjet.all.js",
         sync: "/scramjet.sync.js",
     },
-    defaultConfig: {
+    config: {
         wisp: wispUrl,
     }
 });

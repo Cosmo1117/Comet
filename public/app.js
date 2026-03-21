@@ -147,7 +147,7 @@ console.log(Object.keys(window).filter(k => k.toLowerCase().includes('scramjet')
 
 //sj
 
-const scramjet = new ScramjetController({
+const scramjet = new $scramjetLoadController({
     prefix: "/scramjet/",
     files: {
         wasm: "/scramjet.wasm.wasm",

@@ -155,7 +155,10 @@ html, body {
     height: 28px;
     width: 28px;
     min-width: 28px;
+    min-height: 28px;
+    aspect-ratio: 1/1;
     border-radius: var(--br5px);
+    flex-shrink: 0;
 }
 
 .tab-close-btn {
@@ -655,7 +658,7 @@ html, body {
     display: flex;
     border: none;
     border-radius: var(--br10px);
-    background: color-mix(in srgb, var(--main-dark), transparent 10%);
+    background: color-mix(in srgb, var(--main-dark), transparent 50%);
     color: var(--text-semibold);
     justify-content: space-between;
     align-items: center;

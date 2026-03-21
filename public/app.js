@@ -163,7 +163,7 @@ scramjet.init();
 await navigator.serviceWorker.register("/sw.js");
 
 const connection = new BareMux.BareMuxConnection("/baremux-worker.js");
-await connection.setTransport("/epoxy.mjs", [{ wisp: wispUrl }]);
+await connection.setTransport("/libcurl.mjs", [{ wisp: wispUrl }]);
 
 //url 
 

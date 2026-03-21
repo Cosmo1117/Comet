@@ -125,7 +125,7 @@ function renderTabs() {
 
 function editTab(id, data) {
     const tab = tabs.find(t => t.id === id);
-    if (!tab) throw new error("No tab currently detected.");
+    if (!tab) throw new Error("No tab currently detected.");
 
     if (data.title) tab.title = data.title;
     if (data.favicon) tab.favicon = data.favicon;
@@ -133,7 +133,74 @@ function editTab(id, data) {
         tab.url = data.url;
         const iframe = document.querySelector(`iframe[data-tab-id="${id}"]`);
         if (iframe) iframe.src = data.url;
+        document.getElementById('url-input').value = data.url.startsWith('/scramjet/') 
+            ? scramjet.decodeUrl(data.url) 
+            : data.url;
     }
 
     renderTabs();
 }
+
+//sj
+
+import { ScramjetController } from "/scramjet.all.js";
+import { EpoxyClient } from "/epoxy.js";
+
+const scramjet = new ScramjetController({
+    prefix: "/scramjet/",
+    files: {
+        wasm: "/scramjet.wasm.wasm",
+        worker: "/scramjet.bundle.js",
+        client: "/scramjet.all.js",
+        sync: "/scramjet.sync.js",
+    },
+    codec: {
+        encode: `if (url.startsWith('blob:')) return url;
+return encodeURIComponent(url);`,
+        decode: `return decodeURIComponent(url);`,
+    },
+    transport: EpoxyClient,
+    transportConfig: {
+        wisp: "wss://cometpxy.org/wisp/",
+    },
+});
+
+await scramjet.init("/sw.js");
+
+//url 
+
+document.getElementById('url-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        navigate(e.target.value);
+    }
+});
+
+//listen for newtab input
+
+window.addEventListener('message', (e) => {
+    if (e.data.type === 'navigate') {
+        navigate(e.data.url);
+    }
+});
+
+function navigate(url) {
+    if (url.startsWith("comet://")) {
+        const path = url.replace("comet://", "Ax/ax") + "/index.html";
+        editTab(activeTabId, { url: path });
+        return;
+    }
+
+    const looksLikeUrl = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/.*)?$/.test(url);
+
+    if (looksLikeUrl) {
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            url = "https://" + url;
+        }
+    } else {
+        url = "https://search.brave.com/search?q=" + encodeURIComponent(url);
+    }
+
+    const encoded = scramjet.encodeUrl(url);
+    editTab(activeTabId, { url: encoded });
+}
+

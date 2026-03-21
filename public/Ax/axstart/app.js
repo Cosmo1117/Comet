@@ -137,3 +137,12 @@ function imageHandler(file) {
         preview.style.backgroundSize = "cover";
     }
 }
+
+//search bar
+
+document.getElementById('start-search-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        window.parent.postMessage({ type: 'navigate', url: e.target.value }, '*');
+        e.target.value = '';
+    }
+});

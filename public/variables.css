@@ -6,11 +6,11 @@
     --text-minimal: #6B7280;
     --text-user-input: #94a4bd;
     --button-hover: #30314b;
-    --button-hover-dark: #1b1b30;
     --button-color: #4a48a3;
     --main: #150f2a;
     --main-dark: #08080f; 
     --accent-1: #38334d;
+    --accent-glow: #3f92a1;
     --separator: #47486d;
     --brand-color-1: #9713be;
     --brand-color-2: #7f15e2;
@@ -24,7 +24,7 @@
     --tab-close-hover: #3d3574;
     /* fonts */
     --comfortaa: "Comfortaa", sans-serif;
-    /*border-radii for squircle support idk why im obsessing over this */
+    /*border radii for squircle support idk why im obsessing over this */
     --br10px: 10px;
     --br1px: 1px;
     --br5px: 5px;

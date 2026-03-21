@@ -144,6 +144,8 @@ function editTab(id, data) {
 console.log(Object.keys(globalThis).filter(k => k.toLowerCase().includes('scramjet')));
 console.log(Object.keys(window).filter(k => k.toLowerCase().includes('scramjet')));
 
+console.log($scramjetLoadController);
+console.log(typeof $scramjetLoadController);
 
 //sj
 

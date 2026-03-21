@@ -34,7 +34,7 @@ let userPreferences = {
 
 async function getWeather() {
     try {
-        const ipResponse = await fetch('http://ip-api.com/json');
+        const ipResponse = await fetch('https://ip-api.com/json');
         const location = await ipResponse.json();
         if (location.status !== "success") throw new Error("Failed to grab location")
 

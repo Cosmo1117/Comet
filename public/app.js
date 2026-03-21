@@ -141,6 +141,10 @@ function editTab(id, data) {
     renderTabs();
 }
 
+console.log(Object.keys(globalThis).filter(k => k.toLowerCase().includes('scramjet')));
+console.log(Object.keys(window).filter(k => k.toLowerCase().includes('scramjet')));
+
+
 //sj
 
 const scramjet = new ScramjetController({
@@ -200,7 +204,3 @@ function navigate(url) {
     const encoded = scramjet.encodeUrl(url);
     editTab(activeTabId, { url: encoded });
 }
-
-console.log(Object.keys(globalThis).filter(k => k.toLowerCase().includes('scramjet')));
-console.log(Object.keys(window).filter(k => k.toLowerCase().includes('scramjet')));
-

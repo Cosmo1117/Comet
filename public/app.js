@@ -157,8 +157,9 @@ const scramjet = new ScramjetController({
 scramjet.init();
 await navigator.serviceWorker.register("/sw.js");
 
+const wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
 const connection = new BareMux.BareMuxConnection("/baremux-worker.js");
-await connection.setTransport("/epoxy.mjs", [{ wisp: "wss://cometpxy.org/wisp/" }]);
+await connection.setTransport("/epoxy.mjs", [{ wisp: wispUrl }]);
 //url 
 
 document.getElementById('url-input').addEventListener('keydown', (e) => {

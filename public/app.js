@@ -143,8 +143,6 @@ function editTab(id, data) {
 
 //sj
 
-import { ScramjetController } from "/scramjet.all.js";
-
 const scramjet = new ScramjetController({
     prefix: "/scramjet/",
     files: {
@@ -202,4 +200,6 @@ function navigate(url) {
     const encoded = scramjet.encodeUrl(url);
     editTab(activeTabId, { url: encoded });
 }
+
+console.log(Object.keys(globalThis).filter(k => k.toLowerCase().includes('scramjet')));
 

@@ -170,6 +170,8 @@ return encodeURIComponent(url);`,
     },
 });
 
+console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(scramjet)));
+
 await scramjet.init("/sw.js");
 
 //url 

@@ -1,4 +1,4 @@
-/* javascript for Comet HOME internal page */
+/* javascript for comet new tab page */
 
 //wallpaper change modal toggle
 const wpChangeBtn = document.getElementById("wallpaper-change");
@@ -34,13 +34,10 @@ let userPreferences = {
 
 async function getWeather() {
     try {
-        const ipResponse = await fetch('https://ip-api.com/json');
+        const ipResponse = await fetch('https://ipapi.co/json/');
         const location = await ipResponse.json();
-        if (location.status !== "success") throw new Error("Failed to grab location")
 
-        const country = location.countryCode;
-
-        console.log(country);
+        const country = location.country_code;
 
         const countryDefaults = {
             'US': { units: 'fahrenheit', clock: 12 },
@@ -48,12 +45,13 @@ async function getWeather() {
             'CA': { units: 'celsius', clock: 12 },
             'default': { units: 'celsius', clock: 24 },
         }
-        const settings = countryDefaults[country] || countryDefaults['default']
+        const settings = countryDefaults[country] || countryDefaults['default'];
 
         userPreferences.units = settings.units;
         userPreferences.clock = settings.clock;
 
-        const { lat, lon, city } = location;
+        const lat = location.latitude;
+        const lon = location.longitude;
 
         const weatherResponse = await fetch(
             `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&temperature_unit=${userPreferences.units}`
@@ -61,7 +59,8 @@ async function getWeather() {
         const weatherData = await weatherResponse.json();
 
         const temp = Math.round(weatherData.current_weather.temperature);
-        document.getElementById('weather').textContent = `${temp}°F`;
+        const unit = userPreferences.units === 'fahrenheit' ? '°F' : '°C';
+        document.getElementById('weather').textContent = `${temp}${unit}`;
         
     } catch (error) {
         console.error("Weather failed:", error);

@@ -28,7 +28,7 @@ html, body {
 
 .app {
     display: flex;
-    height: 90%;
+    height: 70%;
     width: 80%;
     border-radius: var(--br20px);
     flex-direction: row;

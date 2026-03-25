@@ -44,6 +44,7 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    white-space: nowrap;
     gap: 5px;
     font-family: "Comfortaa", sans-serif;
     z-index: 3;

@@ -1,16 +1,44 @@
 // app switcher
 const apps = document.getElementById("app-select-popup");
 const appbtn = document.getElementById("sidebar-app-select");
+const clickCapture = document.getElementById('click-capture');
 
-const toggleapps = () => {
+
+clickCapture.addEventListener('click', () => {
+    apps.classList.remove('open');
+    appbtn.classList.remove('open');
+    clickCapture.style.display = 'none';
+});
+
+const toggleapps = (e) => {
+    e.stopPropagation();
     if (apps) {
         apps.classList.toggle('open');
+        appbtn.classList.toggle('open');
+        clickCapture.style.display = apps.classList.contains('open') ? 'block' : 'none';
     }
 };
 
 if (appbtn) {
     appbtn.addEventListener('click', toggleapps)
 }
+
+
+//app button function
+
+//settings
+
+const settingsBtn = document.getElementById("settings-app-btn");
+
+if (settingsBtn) {
+    settingsBtn.addEventListener('click', () => {
+        navigate("comet://settings");
+        appbtn.classList.remove('open');
+        apps.classList.remove('open');
+        clickCapture.style.display = 'none';
+    });
+}
+
 //tabs system
 
 let tabs = [];

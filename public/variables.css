@@ -1,12 +1,12 @@
-:root { /* color vars */
-    --brand-color-gradient: linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff); /*this is a background. needs bg clip, webkit bg clip, and webkit text fill color. */
+:root { /* color vars, lots of stuff is redundant because i want to make it easier for future custom color palettes */
+    --brand-color-gradient: linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff); /*this is a background. needs bg clip, webkit bg clip, and webkit text fill color */
     --text-bold: #ffffff;
     --text-semibold: #dbe1ec;
     --text-normal: #9ca8c0;
     --text-minimal: #6B7280;
     --text-user-input: #94a4bd;
     --button-hover: #30314b;
-    --button-color: #4a48a3;
+    --button-color: #4547c4;
     --main: #150f2a;
     --main-dark: #08080f; 
     --accent-1: #38334d;
@@ -16,7 +16,7 @@
     --brand-color-2: #7f15e2;
     --brand-color-3: #2c30ff;
     --brand-color-4: #03a2ff;
-    /* tab colors they need their own thing cause they different */
+    /* tab colors */
     --tab-bg-passive: transparent;
     --tab-bg-hover: #252041;
     --tab-bg-active: #312958;
@@ -24,7 +24,7 @@
     --tab-close-hover: #3d3574;
     /* fonts */
     --comfortaa: "Comfortaa", sans-serif;
-    /*border radii for squircle support idk why im obsessing over this */
+    /* border radii */
     --br10px: 10px;
     --br1px: 1px;
     --br5px: 5px;

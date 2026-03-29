@@ -110,6 +110,11 @@ html, body {
     background-color: var(--tab-bg-active);
 }
 
+.tab-div.active .tab-name {
+    color: var(--text-semibold);
+    font-weight: 800;
+}
+
 .tab-div.active:hover {
     background-color: var(--tab-bg-active);
 }
@@ -148,9 +153,12 @@ html, body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--text-normal);
+    transition: all 0.3s ease;
+    font-size: 14px;
 }
 
-.tabs > img {
+.tab-div > img {
     height: 28px;
     width: 28px;
     min-width: 28px;

@@ -7,7 +7,8 @@ self.addEventListener("fetch", (event) => {
     const url = new URL(event.request.url);
     
     const bypass = [
-        'https://ipapi.co',
+        'ipapi.co',
+        'open-meteo.com',
     ];
     
     if (bypass.some(domain => url.hostname.includes(domain))) {

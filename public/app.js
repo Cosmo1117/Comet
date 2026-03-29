@@ -205,6 +205,9 @@ function setupIframeListeners(iframe, tabId) {
 
 const wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
 
+const connection = new BareMux.BareMuxConnection("/baremux-worker.js");
+connection.setTransport("/libcurl.mjs", [{ websocket: wispUrl }]);
+
 const { ScramjetController } = $scramjetLoadController();
 
 const scramjet = new ScramjetController({
@@ -219,9 +222,6 @@ const scramjet = new ScramjetController({
 
 scramjet.init();
 await navigator.serviceWorker.register("/sw.js");
-
-const connection = new BareMux.BareMuxConnection("/baremux-worker.js");
-await connection.setTransport("/libcurl.mjs", [{ wisp: wispUrl }]);
 
 //url 
 

@@ -102,8 +102,10 @@ const dropArea = document.getElementById('wallpaper-overlay-bottom');
 const uploadBtn = document.getElementById('wallpaper-upload');
 const preview = document.getElementById('wallpaper-preview');
 
+const uploadLabel = document.getElementById('wallpaper-upload-zone');
+
 dropArea.addEventListener("click", (e) => {
-    if (e.target !== uploadBtn) uploadBtn.click();
+    if (!uploadLabel.contains(e.target)) uploadBtn.click();
 });
 
 ["dragover", "dragleave", "drop"].forEach(type => {
@@ -134,6 +136,7 @@ function imageHandler(file) {
     reader.onload = () => {
         preview.style.backgroundImage = `url('${reader.result}')`;
         preview.style.backgroundSize = "cover";
+        localStorage.setItem('globalWallpaper', reader.result);
     }
 }
 

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "live-server"
+    "dev": "live-server",
+    "build:version": "node -e \"const v=require('./package.json').version; require('fs').writeFileSync('./public/version.js', 'window.COMET_VERSION=\\\"'+v+'\\\";')\"",
+    "build": "npm run build:version"
   },
   "keywords": [],
   "author": "",

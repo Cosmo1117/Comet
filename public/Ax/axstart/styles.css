@@ -40,16 +40,19 @@ html, body {
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
+    width: 500px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    white-space: nowrap;
     gap: 5px;
     font-family: "Comfortaa", sans-serif;
     z-index: 3;
     color: var(--text-semibold);
     font-size: 30px;
-    font-weight: 900
+    font-weight: 900;
+    transform: translateZ(0);
+    contain: layout paint;
 }
 
 .time {
@@ -59,16 +62,21 @@ html, body {
 
 .comet-typeface {
     font-family: 'Blanka', sans-serif;
-    font-size: 100px;
+    position: relative;
+    display: block;
+    font-size: clamp(36px, 7vw, 110px);
     background: linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff);
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: 10px;
+    margin-top: -0.3em;
 }
 
+
 .comet-start-search {
-    width: 25vw;
+    width: clamp(260px, 38vw, 520px);
     height: 35px;
-    border-radius: 25px;
+    border-radius: var(--br25px);
     padding: 2px;
     background:linear-gradient(#1F2937, #1F2937) padding-box, linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff) border-box;
     border: 2px solid transparent;
@@ -76,7 +84,7 @@ html, body {
 }
 
 .comet-start-search:focus-within {
-    filter: brightness(1.3);
+    filter: brightness(1.5);
 }
 
 .comet-start-search input { 
@@ -86,8 +94,12 @@ html, body {
     background-color: transparent; 
     border: none; 
     font-size: 14px; 
-    color: #94a4bd;
+    color: var(--text-semibold);
     font-family: "Comfortaa", sans-serif
+}
+
+.comet-start-search::Placeholder {
+    color: var(--text-normal);
 }
 
 .start-wallpaper {
@@ -103,17 +115,32 @@ html, body {
 
 .comet-searchcard {
     display: flex;
-    height: auto;
+    position: absolute;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: color-mix(in srgb, var(--main), transparent 50%);
     backdrop-filter: blur(10px);
-    border-radius: 20px;
-    gap: 60px;
-    padding: 30px;
-    padding-left: 50px;
-    padding-right: 50px;
+    border-radius: var(--br20px);
+    gap: clamp(30px, 5vh, 55px);
+    padding: clamp(55px, 8vh, 90px) clamp(90px, 10vw, 140px) clamp(45px, 6vh, 70px) clamp(90px, 10vw, 140px);
+    max-width: 90vw;
+    width: clamp(400px, 55vw, 750px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+}
+
+.comet-pre-alpha {
+    height: 30px;
+    width: 100px;
+    display: grid;
+    border-radius: var(--br10px);
+    font-family: "Comfortaa", sans-serif;
+    background: color-mix(in srgb, var(--main), transparent 40%);
+    place-items: center;
+    color: var(--text-normal);
+    border: 1px solid var(--border-color-light-gray);
 }
 
 .wallpaper-change {
@@ -125,11 +152,11 @@ html, body {
     padding: 13px;
     right: 25px;
     bottom: 25px;
-    height: 50px;
-    width: 50px;
+    height: 35px;
+    width: 35px;
     border: none;
-    border-radius: 25px;
-    background: color-mix(in srgb, var(--main), transparent 50%);
+    border-radius: var(--br25px);
+    background: color-mix(in srgb, var(--main-dark), transparent 50%);
     backdrop-filter: blur(10px);
     cursor: pointer;
     color: var(--text-normal);
@@ -143,24 +170,27 @@ html, body {
     max-width: 0;
     overflow: hidden;
     white-space: nowrap;
-    margin-right: 0;
+    margin-right: 15;
     transition: all 0.6s cubic-bezier(.71,.08,.54,.87);
 }
 
 .wpchange-svg {
     stroke: var(--button-color);
-    z-index: inherit;
+    position: absolute;
+    right: 7.5px;
+    z-index: 100;
     flex-shrink: 0;
+    width: 20px;
 }
 
 .wallpaper-change:hover {
     width: 168px;
-    background: color-mix(in srgb, var(--button-hover), transparent 50%);
+    background: color-mix(in srgb, var(--main), transparent 50%);
 }
 
 .wallpaper-change:hover .wp-change-text {
     max-width: 150px;
-    margin-right: 10px;
+    margin-right: 30px;
     opacity: 1;
 }
 
@@ -198,7 +228,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
+    border-radius: var(--br20px);
     border: none;
     gap: 50px;
     padding: 50px;
@@ -224,7 +254,7 @@ html, body {
     min-width: 80%;
     background-color: rgb(122, 122, 122);
     border: none;
-    border-radius: 20px;
+    border-radius: var(--br20px);
 }
 
 #wallpaper-overlay-bottom {
@@ -235,7 +265,7 @@ html, body {
     align-items: center;
     height: 30%;
     width: 70%;
-    border-radius: 10px;
+    border-radius: var(--br10px);
     border-style: dashed;
     border-width: 2px;
     border-color: var(--accent-1)
@@ -259,8 +289,133 @@ html, body {
     align-items: center;
     background-color: var(--main-dark);
     border: none;
-    border-radius: 10px;
+    border-radius: var(--br10px);
     color: var(--text-normal);
     font-family: "Comfortaa", sans-serif;
     cursor: pointer;
+}
+
+.home-info-bar {
+    height: 35px;
+    display: flex;
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: var(--br25px);
+    background: color-mix(in srgb, var(--main-dark), transparent 50%);
+    border: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-info-bar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    color: var(--text-megaminimal);
+    font-family: "comfortaa", sans-serif;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.home-info-bar-btn-f::after {
+    content: " \2022 ";
+    padding: 5px;
+    color: var(--text-megaminimal)
+}
+
+.home-info-bar-btn:hover {
+    color: var(--text-normal);
+    transform: scale(1.05, 1.05);
+}
+
+.hib-separator {
+    width: 1px;
+    height: 14px;
+    background: var(--separator);
+    margin: 0 6px;
+    flex-shrink: 0;
+}
+
+.hib-version {
+    color: var(--text-megaminimal);
+    font-family: var(--comfortaa);
+    font-size: 13px;
+    min-width: 38px;
+}
+
+.hib-ping {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ping-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--text-megaminimal);
+    flex-shrink: 0;
+    transition: background 0.4s ease;
+}
+
+.ping-text {
+    color: var(--text-megaminimal);
+    font-family: var(--comfortaa);
+    font-size: 13px;
+    min-width: 38px;
+}
+
+.ping-reload {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    color: var(--text-megaminimal);
+    transition: color 0.3s ease, transform 0.4s ease;
+}
+
+.ping-reload:hover {
+    color: var(--text-normal);
+    transform: rotate(180deg);
+}
+
+.ping-reload svg {
+    width: 11px;
+    height: 11px;
+}
+
+@supports (corner-shape: squircle) {
+    * {
+        corner-shape: squircle;
+        --br10px: 14px;
+        --br1px: 1px;
+        --br5px: 7px;
+        --br100prc: 100%;
+        --br40px: 56px;
+        --br20px: 28px;
+        --br2px: 3px;
+        --br50prc: 50%;
+        --br25px: 35px;
+    }
+
+    .comet-start-search {
+        corner-shape: round;
+    }
+
+    .wallpaper-change {
+        corner-shape: round;
+    }
+
+    .home-info-bar {
+        corner-shape: round;
+    }
 }

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Settings</title>
+        <script src="settings.js" defer></script>
+        <link rel="stylesheet" href="settings.css">
+        <link rel="stylesheet" href="../../variables.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="app">
+            <div class="settings-sidebar">
+                <h1 class="settings-header">Settings</h1>
+                <button class="settings-sb-btn active" data-target="settings-general">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="settings-tab-svg"><path d="M14 17H5"/><path d="M19 7h-9"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+                    General
+                </button>
+                <button class="settings-sb-btn" data-target="settings-appearance">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="settings-tab-svg"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg>
+                    Appearance
+                </button>
+                <button class="settings-sb-btn" data-target="settings-technical">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="settings-tab-svg"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+                    Technical
+                </button>
+                <button class="settings-sb-btn" data-target="settings-data">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="settings-tab-svg"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                    Data
+                </button>
+                <button class="settings-sb-btn" data-target="settings-cloaking">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="settings-tab-svg"><path d="M14 18a2 2 0 0 0-4 0"/><path d="m19 11-2.11-6.657a2 2 0 0 0-2.752-1.148l-1.276.61A2 2 0 0 1 12 4H8.5a2 2 0 0 0-1.925 1.456L5 11"/><path d="M2 11h20"/><circle cx="17" cy="18" r="3"/><circle cx="7" cy="18" r="3"/></svg>
+                    Cloaking
+                </button>
+                <button class="settings-sb-btn" data-target="settings-info">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="settings-tab-svg"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    Info
+                </button>
+                <button class="settings-sb-btn" data-target="settings-partners">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="settings-tab-svg"><path d="m14.479 19.374-.971.939a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5a5.2 5.2 0 0 1-.219 1.49"/><path d="M15 15h6"/><path d="M18 12v6"/></svg>
+                    Partners
+                </button>
+            </div>
+
+            <div class="settings-content">
+
+                <!-- general -->
+                <div class="settings-page open" id="settings-general">
+                    <div class="settings-section">
+                        <div class="settings-section-title">Search</div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Default search engine</div>
+                                <div class="setting-desc">Choose what search engine to use when entering a non-link query</div>
+                            </div>
+                            <select class="setting-select" id="pref-search-engine">
+                                <option value="brave">Brave Search</option>
+                                <option value="google">Google</option>
+                                <option value="ddg">DuckDuckGo</option>
+                                <option value="bing">Bing</option>
+                            </select>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Open links in</div>
+                                <div class="setting-desc">Choose whether links clicked on a page open in the same tab or a new one</div>
+                            </div>
+                            <select class="setting-select" id="pref-link-target">
+                                <option value="tab">New tab</option>
+                                <option value="same">Same tab</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <div class="settings-section-title">Start Page</div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Clock format</div>
+                                <div class="setting-desc">12-hour or 24-hour time display</div>
+                            </div>
+                            <select class="setting-select" id="pref-clock-format">
+                                <option value="auto">Auto (Regional)</option>
+                                <option value="12">12-hour</option>
+                                <option value="24">24-hour</option>
+                            </select>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Show clock</div>
+                                <div class="setting-desc">Show the time at the top of the new tab page</div>
+                            </div>
+                            <label class="setting-toggle">
+                                <input type="checkbox" id="pref-show-clock" checked>
+                                <span class="setting-toggle-track"></span>
+                            </label>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Show weather</div>
+                                <div class="setting-desc">Show local weather at the top of the new tab page</div>
+                            </div>
+                            <label class="setting-toggle">
+                                <input type="checkbox" id="pref-show-weather" checked>
+                                <span class="setting-toggle-track"></span>
+                            </label>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Homepage</div>
+                                <div class="setting-desc">(Mostly debug) Choose what URL to load on new tabs</div>
+                            </div>
+                            <input type="text" class="setting-input" id="pref-homepage" placeholder="Default (start page)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- appearance -->
+                <div class="settings-page" id="settings-appearance">
+                    <div class="settings-section">
+                        <div class="settings-section-title">Theme</div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Theme</div>
+                                <div class="setting-desc">Customize the way Comet looks by selecting a theme</div>
+                            </div>
+                            <select class="setting-select" id="pref-theme">
+                                <option value="dark">Dark</option>
+                                <option value="light">Light (coming soon)</option>
+                                <option value="system">Auto (system)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <div class="settings-section-title">Layout</div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Compact sidebar</div>
+                                <div class="setting-desc">Show icons only, no labels</div>
+                            </div>
+                            <label class="setting-toggle">
+                                <input type="checkbox" id="pref-compact-sidebar">
+                                <span class="setting-toggle-track"></span>
+                            </label>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Show tab favicons</div>
+                                <div class="setting-desc">Display site icons in the tab bar</div>
+                            </div>
+                            <label class="setting-toggle">
+                                <input type="checkbox" id="pref-favicons" checked>
+                                <span class="setting-toggle-track"></span>
+                            </label>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Show tab title</div>
+                                <div class="setting-desc">Display page title text alongside the favicon</div>
+                            </div>
+                            <label class="setting-toggle">
+                                <input type="checkbox" id="pref-tab-title" checked>
+                                <span class="setting-toggle-track"></span>
+                            </label>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">New tab position</div>
+                                <div class="setting-desc">Where newly opened tabs appear in the tab bar</div>
+                            </div>
+                            <select class="setting-select" id="pref-tab-position">
+                                <option value="end">At the end</option>
+                                <option value="after">After current tab</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- technical -->
+                <div class="settings-page" id="settings-technical">
+                    <div class="settings-section">
+                        <div class="settings-section-title">Proxy</div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Backend</div>
+                                <div class="setting-desc">The proxy engine used to route traffic</div>
+                            </div>
+                            <select class="setting-select" id="pref-proxy-backend">
+                                <option value="scramjet">Scramjet</option>
+                                <option value="uv">Ultraviolet</option>
+                            </select>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Transport</div>
+                                <div class="setting-desc">Network transport layer</div>
+                            </div>
+                            <select class="setting-select" id="pref-transport">
+                                <option value="libcurl">libcurl</option>
+                                <option value="epoxy">Epoxy</option>
+                                <option value="ws">WebSocket</option>
+                            </select>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Wisp server</div>
+                                <div class="setting-desc">Custom Wisp server URL (leave blank for default)</div>
+                            </div>
+                            <input type="text" class="setting-input" id="pref-wisp-url" placeholder="wss://...">
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <div class="settings-section-title">Advanced</div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Wipe session on close</div>
+                                <div class="setting-desc">Clear proxy cookies and storage when the window is closed</div>
+                            </div>
+                            <label class="setting-toggle">
+                                <input type="checkbox" id="pref-wipe-session">
+                                <span class="setting-toggle-track"></span>
+                            </label>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Auto-update service worker</div>
+                                <div class="setting-desc">Check for and apply service worker updates on launch</div>
+                            </div>
+                            <label class="setting-toggle">
+                                <input type="checkbox" id="pref-sw-autoupdate" checked>
+                                <span class="setting-toggle-track"></span>
+                            </label>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Re-register service worker</div>
+                                <div class="setting-desc">Force reinstall the service worker — fixes most proxy issues</div>
+                            </div>
+                            <button class="setting-btn" id="reregister-sw">Re-register</button>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Debug mode</div>
+                                <div class="setting-desc">Log verbose proxy and network output to the console</div>
+                            </div>
+                            <label class="setting-toggle">
+                                <input type="checkbox" id="pref-debug-mode">
+                                <span class="setting-toggle-track"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- data -->
+                <div class="settings-page" id="settings-data">
+                    <div class="settings-section">
+                        <div class="settings-section-title">Settings</div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Export settings</div>
+                                <div class="setting-desc">Download your preferences as a JSON file</div>
+                            </div>
+                            <button class="setting-btn" id="export-settings">Export</button>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Import settings</div>
+                                <div class="setting-desc">Restore preferences from a previously exported file</div>
+                            </div>
+                            <button class="setting-btn" id="import-settings-btn">Import</button>
+                            <input type="file" id="import-settings-file" accept=".json" style="display:none">
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <div class="settings-section-title">Clear browsing data</div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Cookies</div>
+                                <div class="setting-desc">Clears all stored cookies</div>
+                            </div>
+                            <button class="setting-btn" id="clear-cookies">Clear</button>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Cache</div>
+                                <div class="setting-desc">Clears service worker and browser cache</div>
+                            </div>
+                            <button class="setting-btn" id="clear-cache">Clear</button>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Local storage</div>
+                                <div class="setting-desc">Clears saved preferences and wallpaper</div>
+                            </div>
+                            <button class="setting-btn" id="clear-localstorage">Clear</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <div class="settings-section-title">Danger zone</div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Clear everything</div>
+                                <div class="setting-desc">Wipes all data — cookies, cache, storage, and preferences</div>
+                            </div>
+                            <button class="setting-btn destructive" id="clear-all">Clear all</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- cloaking -->
+                <div class="settings-page" id="settings-cloaking">
+                    <div class="settings-section">
+                        <div class="settings-section-title">Tab cloaking</div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Enable tab cloaking</div>
+                                <div class="setting-desc">Disguise the tab title and favicon</div>
+                            </div>
+                            <label class="setting-toggle">
+                                <input type="checkbox" id="pref-cloak-enabled">
+                                <span class="setting-toggle-track"></span>
+                            </label>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Tab title</div>
+                                <div class="setting-desc">The title shown in the browser tab</div>
+                            </div>
+                            <input type="text" class="setting-input" id="pref-cloak-title" placeholder="e.g. Google Classroom">
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Favicon URL</div>
+                                <div class="setting-desc">Link to the icon shown in the browser tab</div>
+                            </div>
+                            <input type="text" class="setting-input" id="pref-cloak-favicon" placeholder="https://...">
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">About:blank cloak</div>
+                                <div class="setting-desc">Open Comet inside an about:blank tab to hide the URL</div>
+                            </div>
+                            <label class="setting-toggle">
+                                <input type="checkbox" id="pref-ab-cloak">
+                                <span class="setting-toggle-track"></span>
+                            </label>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Apply cloaking</div>
+                                <div class="setting-desc">Save and apply the current cloak settings</div>
+                            </div>
+                            <button class="setting-btn" id="apply-cloak">Apply</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <div class="settings-section-title">Panic</div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Panic key</div>
+                                <div class="setting-desc">Instantly navigates away when pressed</div>
+                            </div>
+                            <select class="setting-select" id="pref-panic-key">
+                                <option value="">Disabled</option>
+                                <option value="Escape">Escape</option>
+                                <option value="F1">F1</option>
+                                <option value="F2">F2</option>
+                                <option value="F12">F12</option>
+                            </select>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Panic redirect</div>
+                                <div class="setting-desc">URL to navigate to when the panic key is triggered</div>
+                            </div>
+                            <input type="text" class="setting-input" id="pref-panic-url" placeholder="https://classroom.google.com">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- info -->
+                <div class="settings-page" id="settings-info">
+                    <div class="settings-section">
+                        <div class="settings-section-title">About Comet</div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Version</div>
+                            </div>
+                            <span class="setting-value-label">Pre-alpha</span>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Build</div>
+                            </div>
+                            <span class="setting-value-label" id="info-build">—</span>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Contributors</div>
+                            </div>
+                            <a class="setting-link" href="https://github.com/Cosmo1117/Comet/graphs/contributors" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Lead Design</div>
+                            </div>
+                            <span id="lead-design-label">Cosmo</span>
+                        </div>
+                           <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Backend</div>
+                            </div>
+                            <span class="setting-value-label">Scramjet, Caddy, Wisp</span>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <div class="settings-section-title">Links</div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Source code</div>
+                            </div>
+                            <a class="setting-link" href="https://github.com/Cosmo1117/Comet" target="_blank" rel="noopener noreferrer">View our source code on GitHub!</a>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Community</div>
+                            </div>
+                            <a class="setting-link" href="https://discord.gg/BPr3XGKzWW" target="_blank" rel="noopener noreferrer">Join our community on &#68;&#105;&#115;&#99;&#111;&#114;&#100;!</a>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Report a bug</div>
+                            </div>
+                            <a class="setting-link" href="https://github.com/Cosmo1117/Comet/issues/new" target="_blank" rel="noopener noreferrer">Open an issue on our GitHub!</a>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <div class="setting-label">Documentation</div>
+                            </div>
+                            <a class="setting-link" href="https://docs.cometpxy.org" target="_blank" rel="noopener noreferrer">View Comet's documentation!</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- partners -->
+                <div class="settings-page" id="settings-partners">
+                    <div class="settings-section">
+                        <div class="settings-section-title">Partners</div>
+                        <div class="partner-card">
+                            <div class="partner-name">Name</div>
+                            <div class="partner-desc">Desc</div>
+                            <a class="setting-link" href="#" target="_blank" rel="noopener noreferrer">Visit</a>
+                        </div>
+                    </div>
+                    <div class="partner-empty">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="no-partners-frown"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+                        <p class="no-partners-title">We don't have any partners yet!</p>
+                        <p class="no-partners-body">If you own a &#x55;&#x42;&#x47; or &#x70;&#x72;&#x6f;&#x78;&#x79; site/server, submit a partnership request ticket on our <a class="setting-link" href="https://discord.gg/BPr3XGKzWW" target="_blank" rel="noopener noreferrer">&#x44;&#x69;&#x73;&#x63;&#x6f;&#x72;&#x64;&#x21;</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>

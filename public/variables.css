@@ -1,20 +1,41 @@
-:root { /* color vars */
-    --brand-color-gradient: linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff); /*this is a background. needs bg clip, webkit bg clip, and webkit text fill color. */
+:root { /* color vars, lots of stuff is redundant because i want to make it easier for future custom color palettes */
+    --brand-color-gradient: linear-gradient(90deg, #9713be, #7f15e2, #2c30ff, #03a2ff);
     --text-bold: #ffffff;
     --text-semibold: #dbe1ec;
     --text-normal: #9ca8c0;
     --text-minimal: #6B7280;
+    --text-megaminimal: rgb(79, 80, 117);
     --text-user-input: #94a4bd;
     --button-hover: #30314b;
-    --button-hover-dark: #1b1b30;
-    --button-color: #4a48a3;
+    --button-color: #4547c4;
     --main: #150f2a;
     --main-dark: #08080f; 
     --accent-1: #38334d;
+    --accent-glow: #3f92a1;
     --separator: #47486d;
     --brand-color-1: #9713be;
     --brand-color-2: #7f15e2;
     --brand-color-3: #2c30ff;
     --brand-color-4: #03a2ff;
+    --border-color-gray: #47486d;
+    --border-color-light-gray: #727388;
+    --border-color-dark-gray: #2b2c3d;
+    /* tab colors */
+    --tab-bg-passive: transparent;
+    --tab-bg-hover: #252041;
+    --tab-bg-active: #312958;
+    --tab-accent: linear-gradient(90deg, #7f15e2, #2c30ff);
+    --tab-close-hover: #3d3574;
+    /* fonts */
     --comfortaa: "Comfortaa", sans-serif;
+    /* border radii */
+    --br10px: 10px;
+    --br1px: 1px;
+    --br5px: 5px;
+    --br100prc: 100%;
+    --br40px: 40px;
+    --br20px: 20px;
+    --br2px: 2px;
+    --br50prc: 50%;
+    --br25px: 25px;
 }

@@ -1,4 +1,4 @@
-/* javascript for Comet HOME internal page */
+/* javascript for comet new tab page */
 
 //wallpaper change modal toggle
 const wpChangeBtn = document.getElementById("wallpaper-change");
@@ -34,13 +34,10 @@ let userPreferences = {
 
 async function getWeather() {
     try {
-        const ipResponse = await fetch('http://ip-api.com/json');
+        const ipResponse = await fetch('https://ipapi.co/json/');
         const location = await ipResponse.json();
-        if (location.status !== "success") throw new Error("Failed to grab location")
 
-        const country = location.countryCode;
-
-        console.log(country);
+        const country = location.country_code;
 
         const countryDefaults = {
             'US': { units: 'fahrenheit', clock: 12 },
@@ -48,12 +45,13 @@ async function getWeather() {
             'CA': { units: 'celsius', clock: 12 },
             'default': { units: 'celsius', clock: 24 },
         }
-        const settings = countryDefaults[country] || countryDefaults['default']
+        const settings = countryDefaults[country] || countryDefaults['default'];
 
         userPreferences.units = settings.units;
         userPreferences.clock = settings.clock;
 
-        const { lat, lon, city } = location;
+        const lat = location.latitude;
+        const lon = location.longitude;
 
         const weatherResponse = await fetch(
             `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&temperature_unit=${userPreferences.units}`
@@ -61,7 +59,8 @@ async function getWeather() {
         const weatherData = await weatherResponse.json();
 
         const temp = Math.round(weatherData.current_weather.temperature);
-        document.getElementById('weather').textContent = `${temp}°F`;
+        const unit = userPreferences.units === 'fahrenheit' ? '°F' : '°C';
+        document.getElementById('weather').textContent = `${temp}${unit}`;
         
     } catch (error) {
         console.error("Weather failed:", error);
@@ -72,6 +71,8 @@ async function getWeather() {
 /*clock
 its butchered cause i couldnt figure out why the auto format wasnt working so i just did random shit till it worked*/
 
+
+let lastTimeString = null;
 
 function updateTime() {
     const time = new Date();
@@ -90,7 +91,10 @@ function updateTime() {
         timeString = `${hours}:${minutes}`;
     }
 
-    document.getElementById('time').textContent = timeString;
+    if (timeString !== lastTimeString) {
+        document.getElementById('time').textContent = timeString;
+        lastTimeString = timeString;
+    }
 }
 
 updateTime();
@@ -103,8 +107,10 @@ const dropArea = document.getElementById('wallpaper-overlay-bottom');
 const uploadBtn = document.getElementById('wallpaper-upload');
 const preview = document.getElementById('wallpaper-preview');
 
+const uploadLabel = document.getElementById('wallpaper-upload-zone');
+
 dropArea.addEventListener("click", (e) => {
-    if (e.target !== uploadBtn) uploadBtn.click();
+    if (!uploadLabel.contains(e.target)) uploadBtn.click();
 });
 
 ["dragover", "dragleave", "drop"].forEach(type => {
@@ -126,7 +132,7 @@ uploadBtn.addEventListener("change", () => {
 
 function imageHandler(file) {
     if (!file.type.startsWith("image/")) {
-        alert("This file is not an image. Why would you try to put a non-image as your wallpaper?");
+        alert("This file is not an image. What did you think was going to happen?");
         return;
     }
 
@@ -135,5 +141,44 @@ function imageHandler(file) {
     reader.onload = () => {
         preview.style.backgroundImage = `url('${reader.result}')`;
         preview.style.backgroundSize = "cover";
+        localStorage.setItem('globalWallpaper', reader.result);
     }
 }
+
+// ping
+
+const pingDot = document.getElementById('ping-dot');
+const pingText = document.getElementById('ping-text');
+const pingReloadBtn = document.getElementById('ping-reload');
+
+async function pingServer() {
+    pingDot.style.background = 'var(--text-megaminimal)';
+    pingText.textContent = '...';
+    try {
+        const start = performance.now();
+        await fetch(window.location.origin, { method: 'HEAD', cache: 'no-store' });
+        const ms = Math.round(performance.now() - start);
+        pingText.textContent = `${ms} ms`;
+        if (ms < 100) pingDot.style.background = '#22c55e';
+        else if (ms < 300) pingDot.style.background = '#f59e0b';
+        else pingDot.style.background = '#ef4444';
+    } catch {
+        pingText.textContent = 'offline';
+        pingDot.style.background = '#ef4444';
+    }
+}
+
+pingReloadBtn.addEventListener('click', pingServer);
+document.addEventListener('DOMContentLoaded', pingServer);
+
+//search bar
+
+document.getElementById('start-search-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        window.parent.postMessage({ type: 'navigate', url: e.target.value }, '*');
+        e.target.value = '';
+    }
+});
+
+//version number
+document.querySelector('#hib-version').textContent = `v${window.COMET_VERSION}`;
